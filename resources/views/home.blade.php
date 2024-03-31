@@ -15,6 +15,11 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    @if (Auth::user()->isAdmin())
+                    <a href="{{ route('admin.dashboard.index') }}" class="btn btn-primary">Админка</a>
+
+                    @endif
                 </div>
             </div>
         </div>

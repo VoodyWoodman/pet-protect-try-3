@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountPageController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,4 +31,4 @@ Route::get('/account', [AccountPageController::class, 'index']);
 Route::get('/register2', [RegisterController::class, 'showRegistrationForm'])->name('register2');
 Route::post('/register2', [RegisterController::class, 'register']);
 Route::get('/usersPage', [UserController::class, 'user_page'])->name('user_page');
-
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');

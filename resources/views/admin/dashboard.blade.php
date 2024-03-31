@@ -19,6 +19,7 @@
             <li><a href="#">Настройки</a></li>
             <!-- Другие пункты меню -->
         </ul>
+
     </nav>
 
     <main>
@@ -27,6 +28,13 @@
             <!-- Здесь могут быть блоки с информацией, таблицы с данными и т.д. -->
             <h2>Добро пожаловать, администратор!</h2>
             <p>Здесь вы можете управлять вашим приложением.</p>
+            @foreach($users as $user)
+            <form action="{{ route('admin.assignRole', $user->id) }}" method="POST">
+                @csrf
+                @method('POST')
+                <button type="submit" class="btn btn-primary">Назначить роль админа пользователю {{ $user->name }}</button>
+            </form>
+            @endforeach
         </div>
     </main>
 
