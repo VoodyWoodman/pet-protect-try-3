@@ -16,9 +16,29 @@
 
                     {{ __('You are logged in!') }}
 
-                    @if (Auth::user()->isAdmin())
-                    <a href="{{ route('admin.dashboard.index') }}" class="btn btn-primary">Админка</a>
+                    <form action="{{ route('upload.avatar') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="avatar">Choose Avatar:</label>
+                            <input type="file" class="form-control-file @error('avatar') is-invalid @enderror" id="avatar" name="avatar">
+                            @error('avatar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary">Загрузить</button>
+                    </form>
 
+                    {{-- @if (Auth::user()->isAdmin())
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Админка</a>
+                    @endif --}}
+
+                    @if (Auth::check())
+                         @if (@auth ()->user()->avatar_path)
+                         <img src="{{ Storage::disk('public')->url('avatars/' . Auth::user()->avatar_path) }}" alt="User Avatar">
+                         @endif
+                         {{-- <a href="{{ route('sites.index') }}" class="btn btn-primary">Список сайтов</a> --}}
                     @endif
                 </div>
             </div>

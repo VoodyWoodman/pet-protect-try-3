@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role', // Добавляем поле role
+        'avatar',
     ];
 
     /**
@@ -43,9 +43,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Отношение "один ко многим" с моделью Site
+    public function sites()
+    {
+        return $this->hasMany(Site::class);
+    }
+
     // Проверка на админа
     public function isAdmin()
     {
         return $this->role === 'admin';
     }
+
+
+
+
 }

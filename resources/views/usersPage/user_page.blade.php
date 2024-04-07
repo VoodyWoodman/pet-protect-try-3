@@ -1,27 +1,43 @@
-<!-- resourses/views/userPage/user_page.blade.php -->
-<h1>Список пользователей</h1>
+@extends('layouts.app')
 
-@if ($users->isEmpty())
-    <p>Нет пользлователей для отображения</p>
-@else
-
-<ul>
-    @foreach ($users as $user)
-        <li>
-            №: {{ $user->id }}
-            Имя: {{ $user->name }}
-            Email: {{ $user->email }}
-            Дата регистрации: {{ $user->created_at }}
-        </li>
-
-        <div>
-            <p>Имя пользователя: {{ $user->name }}</p>
-            <form action="{{ route('admin.assignRole', $user->id) }}" method="POST">
-                @csrf
-                <button type="submit">Назначить роль админа</button>
-            </form>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Список пользователей</div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID пользователя</th>
+                                <th scope="col">Имя</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Дата регистрации</th>
+                                <th scope="col">Роль</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if ($users->isEmpty())
+                                <tr>
+                                    <td colspan="4">Нет пользователей для отображения</td>
+                                </tr>
+                            @else
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->created_at }}</td>
+                                        <td>{{ $user->role }}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-
-    @endforeach
-</ul>
-@endif
+    </div>
+</div>
+@endsection

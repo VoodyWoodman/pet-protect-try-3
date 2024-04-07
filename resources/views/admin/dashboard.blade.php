@@ -1,46 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Административная панель</title>
-    <!-- Добавьте ссылки на ваши CSS-файлы и скрипты -->
-</head>
-<body>
-    <header>
-        <h1>Административная панель</h1>
-    </header>
+@extends('layouts.app')
 
-    <nav>
-        <!-- Меню навигации для административной панели -->
-        <ul>
-            <li><a href="#">Главная</a></li>
-            <li><a href="{{ route('user_page')}}" class="btn-primary">Пользователи</a></li>
-            <li><a href="#">Настройки</a></li>
-            <!-- Другие пункты меню -->
-        </ul>
+@section('content')
 
-    </nav>
+<div class="container">
 
-    <main>
-        <!-- Основное содержимое страницы административной панели -->
-        <div>
-            <!-- Здесь могут быть блоки с информацией, таблицы с данными и т.д. -->
-            <h2>Добро пожаловать, администратор!</h2>
-            <p>Здесь вы можете управлять вашим приложением.</p>
-            @foreach($users as $user)
-            <form action="{{ route('admin.assignRole', $user->id) }}" method="POST">
-                @csrf
-                @method('POST')
-                <button type="submit" class="btn btn-primary">Назначить роль админа пользователю {{ $user->name }}</button>
-            </form>
-            @endforeach
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card">
+
+                <div class="card-header">Административная панель</div>
+
+                <div class="card-body">
+
+                    <h2>Добро пожаловать, администратор!</h2>
+                    <p>Здесь вы можете управлять вашим приложением.</p>
+                    <nav>
+                        <!-- Меню навигации для административной панели -->
+                        <ul>
+                            <li><a href="#">Главная</a></li>
+                            <li><a href="{{ route('user_page') }}" class="btn-primary">Пользователи</a></li>
+                            <li><a href="{{ route('sites') }}" class="btn-primary">Сайты</a></li>
+                            <li><a href="#">Настройки</a></li>
+                        </ul>
+                    </nav>
+
+                    @if ($users->count() > 0)
+                        <ul>
+                            @foreach ($users as $user)
+                                {{-- <li>
+                                    <form action="{{ route('admin.assignRole', $user->id) }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        {{-- <button type="submit" class="btn btn-primary">Назначить роль админа пользователю {{ $user->name }}</button> --}}
+                                    </form>
+                                </li>
+
+
+                            @endforeach
+                        </ul>
+                    @else
+                        <p>Нет доступных пользователей для назначения роли админа.</p>
+                    @endif
+
+                </div>
+
+            </div>
         </div>
-    </main>
-
-    <footer>
-        <!-- Подвал административной панели -->
-        <p>&copy; 2024 Ваше приложение</p>
-    </footer>
-</body>
-</html>
+    </div>
+</div>
+@endsection
