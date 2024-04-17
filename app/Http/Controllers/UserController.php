@@ -9,18 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function showProfile()
+    public function showUserProfile()
     {
         $user = Auth::user();
-        return view('user.profile', compact('user'));
+        return view('usersPage.user_profile', compact('user'));
     }
-
-    public function user_page()
-    {
-        $users = User::all();
-        return view('usersPage.user_page', ['users' => $users]);
-    }
-
     public function index()
     {
         return view('dashboard.index');

@@ -14,10 +14,14 @@ class SiteController extends Controller
     public function index()
     {
         $sites = auth()->user()->sites;
-
         return view('sites.sites', compact('sites'));
     }
 
+    public function allSites()
+    {
+        $sites = auth()->user()->sites;
+        return view('sites.all_users_sites', compact('sites'));
+    }
     // Метод для отображения формы добавления нового сайта
     public function create()
     {

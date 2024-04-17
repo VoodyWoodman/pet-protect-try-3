@@ -57,26 +57,5 @@ class AdminController extends Controller
         return redirect()->back()->with('succes', 'Комментарий успешно добавлен');
     }
 
-    public function update(Request $request, $id)
-    {
-        // Находим сайт по идентификатору
-        $site = Site::findOrFail($id);
 
-        // Проверяем, является ли текущий пользователь владельцем сайта
-        if ($site->user_id !== auth()->id()) {
-            return redirect()->back()->with('error', 'У вас нет прав для редактирования этого сайта.');
-        }
-
-        // Валидация данных
-        $request->validate([
-            'url' => 'required|url',
-        ]);
-
-        // Обновляем URL сайта
-        $site->update([
-            'url' => $request->url,
-        ]);
-
-        return redirect()->back()->with('success', 'URL сайта успешно обновлен.');
-    }
 }
