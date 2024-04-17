@@ -10,10 +10,10 @@
 
             <div class="card">
 
-                <div class="card-header">
+               <div class="card-header">
                     <div class="row">
                         <div class="col-md-6">
-                            Список сайтов и кликов
+                            <button class="btn btn-link" id="showSitesButton" onclick="window.location.href = 'all_users_sites';">Список сайтов</button>
                         </div>
                         <div class="col-md-6 text-right">
                             Статистика
@@ -32,9 +32,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h3>Список сайтов:</h3>
+
                             @if ($sites && $sites->count() > 0)
                                 <ul>
-                                    @foreach ($sites as $site)
+                                    @foreach ($sites->sortByDesc('created_at')->take(3) as $site)
                                         <li>{{ $site->url }}</li>
                                     @endforeach
                                 </ul>

@@ -33,7 +33,11 @@
                         <!-- Кнопка "Список сайтов" для аутентифицированных пользователей -->
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('sites.index') }}">Список сайтов</a>
+                                <a class="nav-link" href="{{ route('sites.index') }}">Личный кабинет</a>
+                            </li>
+                            <!-- Кнопка "Домой" -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://127.0.0.1:8000/home">Домой</a>
                             </li>
                         @endauth
                     </ul>
@@ -45,18 +49,24 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.dashboard') }}">Админка</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.moderator') }}">Модерация</a>
+                            </li>
                         @endif
+
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Вход') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                                 </li>
                             @endif
                         @else
@@ -66,9 +76,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('user_profile') }}">
+                                        {{ __('Профиль') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Выйти') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

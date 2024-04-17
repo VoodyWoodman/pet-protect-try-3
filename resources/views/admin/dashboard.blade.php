@@ -20,7 +20,7 @@
                         <!-- Меню навигации для административной панели -->
                         <ul>
                             <li><a href="#">Главная</a></li>
-                            <li><a href="{{ route('user_page') }}" class="btn-primary">Пользователи</a></li>
+                            <li><a href="{{ route('admin.user_page') }}" class="btn-primary">Пользователи</a></li>
                             <li><a href="{{ route('sites') }}" class="btn-primary">Сайты</a></li>
                             <li><a href="#">Настройки</a></li>
                         </ul>
