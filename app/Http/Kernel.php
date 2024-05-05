@@ -42,6 +42,11 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\AdminMiddleware::class,
         ],
 
+        'moderator' => [
+            \App\Http\Middleware\ModeratorMiddleware::class,
+        ],
+
+
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',

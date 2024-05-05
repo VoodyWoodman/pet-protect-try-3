@@ -22,7 +22,7 @@
                             <li><a href="#">Главная</a></li>
                             <a href="{{ route('moderator.content') }}">Контент</a>
                             <li><a href="{{ route('create') }}" class="btn-primary">Создать контент</a></li>
-                            <li><a href="#">Модераторы</a></li>
+                            <li><a href="{{ route('moderator.dashboard') }}" class="btn-primary">Модераторы</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -9,7 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Contracts\Auth\CanResetPassword;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasRoles;
 
@@ -54,6 +55,27 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role === 'admin';
+    }
+
+    // Проверка на модератора
+
+    public function isModerator()
+    {
+        return $this->role === 'moderator';
+    }
+
+    public function name()
+    {
+        return $this->name;
+    }
+
+    // Защищенные поля
+    protected $guarded = [];
+
+    // Мутатор для аватара
+    public function setAvatarAttribute($value)
+    {
+        $this->attributes['avatar'] = $value;
     }
 
 

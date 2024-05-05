@@ -45,16 +45,18 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Кнопка "Админка" для аутентифицированных пользователей с ролью администратора -->
-                        @if (Auth::check() && Auth::user()->isAdmin())
+                        @if (Auth::check())
+                        @if (Auth::user()->isAdmin())
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.dashboard') }}">Админка</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.moderator') }}">Модерация</a>
-                            </li>
                         @endif
 
+                        @if (Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isModerator()))
+                            <a class="nav-link" href="{{ route('page.index') }}">Модерация</a>
+                        @endif
+                    @endif
 
                         <!-- Authentication Links -->
                         @guest

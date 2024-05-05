@@ -45,7 +45,7 @@
                                                 <td>{{ $site->url }}</td>
                                                 <td>{{ $site->created_at }}</td>
                                                 <td>
-                                                    <form action="{{ route('upload.avatar', ['id' => $site->id]) }}" method="post" enctype="multipart/form-data">
+                                                    {{-- <form action="{{ route('upload.avatar', ['id' => $site->id]) }}" method="post" enctype="multipart/form-data"> --}}
                                                         @csrf
                                                         <input type="file" name="avatar" accept="image/*">
                                                         <button type="submit">Загрузить аватарку</button>

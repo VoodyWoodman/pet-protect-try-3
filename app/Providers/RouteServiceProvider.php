@@ -45,6 +45,7 @@ class RouteServiceProvider extends ServiceProvider
         // $this->mapApiRoutes();
          $this->mapWebRoutes();
          $this->mapAdminRoutes();
+         $this->mapModeratorRoutes();
     }
 
     protected function mapAdminRoutes()
@@ -53,6 +54,14 @@ class RouteServiceProvider extends ServiceProvider
         ->prefix('admin')
         ->namespace('App\Http\Controllers')
         ->group(base_path('routes/admin.php'));
+    }
+
+    protected function mapModeratorRoutes()
+    {
+        Route::middleware('web')
+        ->prefix('moderator')
+        ->namespace('App\Http\Controllers')
+        ->group(base_path('routes/moderator.php'));
     }
 
     protected function mapWebRoutes()

@@ -14,8 +14,9 @@
                     @foreach ($articles as $article)
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $article->title }}</h5>
+                            <h5 class="card-title"><a href="{{ route('articles.show', $article) }}">{{ $article->title }}</a></h5>
                             <p class="card-text">{{ $article->body }}</p>
+                            <p class="card-text"> {{ $article->created_at->format('d F Y') }}</p>
                         </div>
                     </div>
                     @endforeach
@@ -26,4 +27,3 @@
     </div>
 </div>
 @endsection
-

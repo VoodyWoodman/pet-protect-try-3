@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ModeratorController extends Controller
 {
+
     public function index()
     {
         return view('usersPage.moderator.page');

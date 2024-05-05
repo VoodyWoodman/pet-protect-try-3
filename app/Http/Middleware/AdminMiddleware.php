@@ -4,21 +4,23 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Response;
 
 class AdminMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return \Illuminate\Http\Response
      */
-    public function handle(Request $request, Closure $next): Response
-    {
-        if (!auth()->check() || !auth()->user()->isAdmin()) {
-            return redirect('/'); // Перенаправление на главную страницу или другую страницу, если у пользователя нет прав администратора
-        }
-
-        return $next($request);
+    public function handle(Request $request, Closure $next)
+{
+    if (!auth()->check() || !auth()->user()->isAdmin()) {
+        return redirect('/sss')->with('error', 'У вас нет доступа к этой странице.');
     }
+
+    return $next($request);
+}
 }
