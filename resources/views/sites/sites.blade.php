@@ -13,7 +13,7 @@
                <div class="card-header">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-link" id="showSitesButton" onclick="window.location.href = '{{ route('sites.all') }}';">Список сайтов</button>
+                            Список сайтов и кликов
                         </div>
                         <div class="col-md-6 text-right">
                             Статистика

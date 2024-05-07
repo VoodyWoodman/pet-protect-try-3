@@ -8,7 +8,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\ModeratorController;
 use App\Http\Controllers\PostContentController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\VisitorController;
+
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -41,9 +41,6 @@ Route::middleware(['auth','admin',])->group(function () {
     // Маршрут для отправки письма с админки
     Route::post('/send-verification-email/{userId}', [EmailVerificationController::class, '']);
 
-    // маршруты для обработки информации о посетителях
-    Route::get('active-users', [VisitorController::class, 'getActiveUsers'])->name('active-users');
-    Route::post('track-visit', [VisitorController::class, 'trackVisit'])->name('track-visit');
 
         // //Маршрут для модераторов
         // Route::get('/page', [ModeratorController::class, 'index'])->name('admin.moderator');
