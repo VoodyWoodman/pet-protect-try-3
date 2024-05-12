@@ -51,14 +51,12 @@ class PostContentController extends Controller
         // Проверка данных формы
         $request->validate([
             'title' => 'required|string|max:255',
-            'excerpt' => 'required|string',
             'body' => 'required|string',
         ]);
 
         // Создание новой статьи
         $article = new Article();
         $article->title = $request->title;
-        $article->excerpt = $request->excerpt;
         $article->body = $request->body;
 
         $article->save();

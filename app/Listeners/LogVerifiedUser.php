@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use Illuminate\Auth\Events\Verified;
 
+
 class LogVerifiedUser
 {
     /**
@@ -22,11 +23,7 @@ class LogVerifiedUser
      */
     public function handle(Verified $event)
     {
-        // Получить пользователя, чей адрес электронной почты был подтвержден
         $user = $event->user;
-
-        // Выполнить любую необходимую логику после подтверждения адреса электронной почты
-        // Например, записать в журнал или выполнить другие действия
-        logger()->info("User {$user->name} has verified their email address.");
+        logger()->info("User {$user->getEmail()} has verified their email address.");
     }
 }

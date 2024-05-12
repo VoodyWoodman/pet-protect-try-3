@@ -78,7 +78,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('user_profile') }}">
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}">
                                         {{ __('Профиль') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

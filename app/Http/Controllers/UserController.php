@@ -23,9 +23,6 @@ class UserController extends Controller
     {
         // Логика для отображения формы создания элемента
     }
-
-
-
     public function edit($id)
     {
         // Логика для отображения формы редактирования элемента с идентификатором $id

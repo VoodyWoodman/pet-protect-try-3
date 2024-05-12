@@ -10,7 +10,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('articles.index', compact('articles'));
+        return view('usersPage.moderator.articles.articles', compact('articles'));
     }
     public function show(Article $article)
     {

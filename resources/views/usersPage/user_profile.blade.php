@@ -19,7 +19,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('avatar.upload') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('upload.avatar') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="avatar">Выбрать фото:</label>

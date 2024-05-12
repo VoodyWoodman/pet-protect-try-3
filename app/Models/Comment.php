@@ -17,6 +17,16 @@ class Comment extends Model
 
     public function article()
     {
-        return $this->belongsTo(Article::class, 'article_id', 'id');
+        return $this->belongsTo(Article::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
+
+    public function scopeParentComments($query)
+    {
+        return $query->whereNull('parent_id');
     }
 }

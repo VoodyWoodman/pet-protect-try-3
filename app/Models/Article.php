@@ -9,10 +9,11 @@ class Article extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'excerpt', 'body']; // Указываем поля, доступные для массового заполнения
+    protected $fillable = ['title', 'body']; // Указываем поля, доступные для массового заполнения
 
-    protected $attributes = [
-        'content' => '', // Значение по умолчанию для поля 'content'
-    ];
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
 }

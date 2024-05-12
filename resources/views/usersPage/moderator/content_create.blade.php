@@ -22,9 +22,7 @@
                             <input type="text" class="form-control" name="title" placeholder="Введите заголовок" required>
                         </div>
 
-                        <div class="form-group">
-                            <textarea class="form-control" name="excerpt" placeholder="Введите анонс поста" required></textarea>
-                        </div>
+
 
                         <div class="form-group">
                             <textarea class="form-control" name="body" placeholder="Введите текст поста" rows="7" required></textarea>
